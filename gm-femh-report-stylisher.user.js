@@ -4,6 +4,7 @@
 // @version      0.1
 // @description  Re-style the pathology report webpage
 // @author       I-Ta Tsai
+// @license      MIT
 // @match        http://intralab.ad.femh.local:8080/DataPah.aspx*
 // @require      https://code.jquery.com/jquery-3.2.1.min.js
 // @resource     bootstrapCSS https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css
