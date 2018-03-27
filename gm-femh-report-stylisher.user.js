@@ -40,6 +40,11 @@ body {
 
 pre {
   color: #fff !important;
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 `);
 
@@ -66,8 +71,8 @@ pre {
   // create new body
   var newbody = document.createElement("body");
   $(newbody).html(`
-<div class="container">
-  <table class="table">
+<div class="container mt-3">
+  <table class="table table-bordered">
     <tbody>
       <tr>
         <th scope="row">檢驗名稱</th>
@@ -75,7 +80,7 @@ pre {
       </tr>
       <tr>
         <th scope="row">簽收時間</th>
-        <td>${exam_time}</td>
+        <td class="w-50">${exam_time}</td>
         <th scope="row">報告時間</th>
         <td>${report_time}</td>
       </tr>
@@ -94,7 +99,7 @@ pre {
 
   <div class="row">
     <div class="col-sm-12">
-      <div class="card">
+      <div class="card mb-3">
         <h6 class="card-header">
           檢驗後診斷名稱
         </h6>
