@@ -46,6 +46,20 @@ pre {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+
+th {
+  background-color: #444;
+}
+
+.fixed-th-width {
+  width: 9rem;
+}
+
+@media (min-width: 576px) {
+.container {
+    max-width: none;
+}
+}
 `);
 
 (function () {
@@ -79,9 +93,9 @@ pre {
         <td colspan="3">${exam_name}</td>
       </tr>
       <tr>
-        <th scope="row">簽收時間</th>
-        <td class="w-50">${exam_time}</td>
-        <th scope="row">報告時間</th>
+        <th scope="row" class="fixed-th-width">簽收時間</th>
+        <td>${exam_time}</td>
+        <th scope="row" class="fixed-th-width">報告時間</th>
         <td>${report_time}</td>
       </tr>
       <tr>
