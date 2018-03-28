@@ -7,6 +7,7 @@
 // @license      MIT
 // @match        http://intralab.ad.femh.local:8080/DataPah.aspx*
 // @require      https://code.jquery.com/jquery-3.2.1.min.js
+// @require      https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js
 // @resource     bootstrapCSS https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css
 // @resource     bootstrapDarklyCSS https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/darkly/bootstrap.min.css
 // @grant        GM_getResourceURL
@@ -76,6 +77,17 @@ th {
   var report_txt = $('#TextBox6').val();
   var malignant_txt = $('#Label8').text();
 
+  // tune post diagnosis string
+  var refined_post_dx = post_dx;
+  var split_post_dx = post_dx.split(/\d+\.\s+/);
+  if (split_post_dx.length > 1) {
+      refined_post_dx = "<ol>";
+      split_post_dx.slice(1).forEach(function(item){
+          refined_post_dx += "<li>" + item + "</li>";
+      });
+      refined_post_dx += "</ol>";
+  }
+
   // remove original body
   $('body').remove();
 
@@ -116,9 +128,10 @@ th {
       <div class="card mb-3">
         <h6 class="card-header">
           檢驗後診斷名稱
+          <a href="#" data-toggle="popover" title="Original text" data-content="${post_dx}">+</a>
         </h6>
         <div class="card-body">
-          <p class="card-text">${post_dx}</p>
+          <p class="card-text">${refined_post_dx}</p>
         </div>
       </div>
     </div>
@@ -139,4 +152,6 @@ th {
 </div>
 `);
   $("html").append(newbody);
+
+  $('[data-toggle="popover"]').popover();
 })();
