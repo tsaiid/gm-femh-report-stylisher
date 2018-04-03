@@ -80,6 +80,9 @@ th {
   // tune post diagnosis string
   var refined_post_dx = post_dx;
   var split_post_dx = post_dx.split(/\d+\.\s+/);
+  if (split_post_dx.length == 1) {
+      split_post_dx = post_dx.split(/\d+\)\s+/);
+  }
   if (split_post_dx.length > 1) {
       refined_post_dx = "<ol>";
       split_post_dx.slice(1).forEach(function(item){
